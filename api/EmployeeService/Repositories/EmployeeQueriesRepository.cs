@@ -15,6 +15,13 @@ namespace EmployeeService.Repositories
             return await _dbContext.Employees.ToListAsync();
         }
 
+        public async Task<List<Employee>> GetAllIncludedAsync()
+        {
+            return await _dbContext.Employees.Include(e => e.Person).
+                Include(e => e.Department).Include(e => e.Position).
+                ToListAsync();
+        }
+
         public async Task<Employee?> GetByIdAsync(int id)
         {
             return await _dbContext.Employees.FindAsync(id)!;

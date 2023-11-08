@@ -8,5 +8,6 @@ namespace EmployeeService.Repositories
         Task<Employee?> GetByIdIncludedAsync(int id);
         Task<bool> IsExistsById(int id);
         Task<List<Employee>> GetAllAsync();
+        Task<List<Employee>> GetAllIncludedAsync();
     }
 }
