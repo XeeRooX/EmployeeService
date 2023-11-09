@@ -20,10 +20,25 @@ namespace EmployeeService.Repositories
             return await _dbContext.Departments.FindAsync(id);
         }
 
-        public async Task<bool> IsExistsById(int id)
+        public bool IsExistsById(int id)
+        {
+            return _dbContext.Departments.Find(id) != null;
+        }
+
+        public async Task<bool> IsExistsByIdAsync(int id)
         {
             return await _dbContext.Departments.FindAsync(id) != null;
+        }
 
+        public bool IsUniqueName(string name)
+        {
+            return _dbContext.Departments.FirstOrDefault(d => d.Name == name) == null;
+        }
+
+        public bool IsUniqueNameById(string name, int id)
+        {
+            var department = _dbContext.Departments.FirstOrDefault(p => p.Name == name);
+            return department != null ? department.Id == id : true;
         }
     }
 }

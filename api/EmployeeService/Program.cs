@@ -2,15 +2,22 @@ using EmployeeService.Commands;
 using EmployeeService.Models;
 using EmployeeService.Queries;
 using EmployeeService.Repositories;
+using EmployeeService.Validators.EmployeeValidators;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
+using static FluentValidation.DependencyInjectionExtensions;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddFluentValidationAutoValidation();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddValidatorsFromAssemblyContaining<GetEmployeeValidator>();
 builder.Services.AddSwaggerGen();
 
 string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");

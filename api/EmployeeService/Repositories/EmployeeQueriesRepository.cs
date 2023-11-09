@@ -34,7 +34,12 @@ namespace EmployeeService.Repositories
                 FirstOrDefaultAsync(e => e.Id == id);
         }
 
-        public async Task<bool> IsExistsById(int id)
+        public bool IsExistsById(int id)
+        {
+            return _dbContext.Employees.Find(id) != null;
+        }
+
+        public async Task<bool> IsExistsByIdAsync(int id)
         {
             return await _dbContext.Employees.FindAsync(id) != null;
         }

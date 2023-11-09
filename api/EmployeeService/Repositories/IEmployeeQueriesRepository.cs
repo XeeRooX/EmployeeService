@@ -6,7 +6,8 @@ namespace EmployeeService.Repositories
     {
         Task<Employee?> GetByIdAsync(int id);
         Task<Employee?> GetByIdIncludedAsync(int id);
-        Task<bool> IsExistsById(int id);
+        Task<bool> IsExistsByIdAsync(int id);
+        bool IsExistsById(int id);
         Task<List<Employee>> GetAllAsync();
         Task<List<Employee>> GetAllIncludedAsync();
     }

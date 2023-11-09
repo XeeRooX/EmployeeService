@@ -22,9 +22,25 @@ namespace EmployeeService.Repositories
             return await _dbContext.Positions.FindAsync(id);
         }
 
-        public async Task<bool> IsExistsById(int id)
+        public bool IsExistsById(int id)
+        {
+            return _dbContext.Positions.Find(id) != null;
+        }
+
+        public async Task<bool> IsExistsByIdAsync(int id)
         {
             return await _dbContext.Positions.FindAsync(id) != null;
+        }
+
+        public bool IsUniqueName(string name)
+        {
+            return _dbContext.Positions.FirstOrDefault(x => x.Name == name) == null;
+        }
+
+        public bool IsUniqueNameById(string name, int id)
+        {
+            var position = _dbContext.Positions.FirstOrDefault(p => p.Name == name);
+            return position != null ? position.Id == id : true;
         }
     }
 }
