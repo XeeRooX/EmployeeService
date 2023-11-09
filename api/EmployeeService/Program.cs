@@ -1,4 +1,6 @@
+using EmployeeService.Commands;
 using EmployeeService.Models;
+using EmployeeService.Queries;
 using EmployeeService.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +22,13 @@ builder.Services.AddScoped<IDepartmentCommandsRepository, DepartmentCommandsRepo
 builder.Services.AddScoped<IDepartmentQueriesRepository, DepartmentQueriesRepository>();
 builder.Services.AddScoped<IPositionQueriesRepository, PositionQueriesRepository>();
 builder.Services.AddScoped<IPositionCommandsRepository, PositionCommandsRepository>();
+
+builder.Services.AddScoped<IDepartmentQueries, DepartmentQueries>();
+builder.Services.AddScoped<IEmployeeQueries, EmployeeQueries>();
+builder.Services.AddScoped<IPositionQueries, PositionQueries>();
+builder.Services.AddScoped<IDepartmentCommands, DepartmentCommands>();
+builder.Services.AddScoped<IEmployeeCommands, EmployeeCommands>();
+builder.Services.AddScoped<IPositionCommands, PositionCommands>();
 
 var app = builder.Build();
 

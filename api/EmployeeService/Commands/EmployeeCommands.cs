@@ -17,7 +17,9 @@ namespace EmployeeService.Commands
             Employee employee = new Employee() 
             { 
                 DateOfEmployment = employeeData.DateOfEmployment,
-                TariffRate = employeeData.TariffRate
+                TariffRate = employeeData.TariffRate,
+                PositionId = employeeData.PostionId,
+                DepartmentId = employeeData.DepartmentId
             };
 
             Person person = new Person()
@@ -42,7 +44,9 @@ namespace EmployeeService.Commands
             {
                 Id = employeeData.EmployeeId,
                 DateOfEmployment = employeeData.DateOfEmployment,
-                TariffRate = employeeData.TariffRate
+                TariffRate = employeeData.TariffRate,
+                DepartmentId = employeeData.DepartmentId,
+                PositionId = employeeData.PostionId
             };
 
             Person person = new Person()

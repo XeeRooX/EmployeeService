@@ -14,6 +14,8 @@ namespace EmployeeService.Repositories
         {
             await _dbContext.People.AddAsync(person);
             employee.Person = person;
+            employee.Department = await _dbContext.Departments.FindAsync(employee.DepartmentId)!;
+            employee.Position = await _dbContext.Positions.FindAsync(employee.PositionId)!;
             await _dbContext.Employees.AddAsync(employee);
 
             await _dbContext.SaveChangesAsync();
@@ -38,6 +40,8 @@ namespace EmployeeService.Repositories
             employee.Person.Lastname = personData.Lastname;
             employee.Person.Surname = personData.Surname;
             employee.Person.DateOfBirth = personData.DateOfBirth;
+            employee.Department = await _dbContext.Departments.FindAsync(employeeData.DepartmentId)!;
+            employee.Position = await _dbContext.Positions.FindAsync(employeeData.PositionId)!;
 
             await _dbContext.SaveChangesAsync();
         }

@@ -28,8 +28,8 @@ namespace EmployeeService.Repositories
         public async Task EditAsync(Position positionData)
         {
             Position position = await _dbContext.Positions.FindAsync(positionData.Id)!;
-            position.Name = position.Name;
-            position.SurplusFactor = position.SurplusFactor;
+            position.Name = positionData.Name;
+            position.SurplusFactor = positionData.SurplusFactor;
 
             await _dbContext.SaveChangesAsync();
         }
