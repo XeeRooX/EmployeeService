@@ -1,4 +1,5 @@
-﻿using EmployeeService.Models;
+﻿using EmployeeService.Dtos;
+using EmployeeService.Models;
 
 namespace EmployeeService.Repositories
 {
@@ -10,5 +11,6 @@ namespace EmployeeService.Repositories
         bool IsExistsById(int id);
         Task<List<Employee>> GetAllAsync();
         Task<List<Employee>> GetAllIncludedAsync();
+        Task<List<Employee>> GetSortedAsync(EmployeeFilterDto filter);
     }
 }

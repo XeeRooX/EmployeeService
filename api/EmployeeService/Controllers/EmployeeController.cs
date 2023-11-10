@@ -49,5 +49,12 @@ namespace EmployeeService.Controllers
             await _employeeCommands.DeleteEmployeeAsync(input);
             return Ok();
         }
+
+        [HttpPost("filter")]
+        public async Task<IActionResult> Filter(EmployeeFilterDto input)
+        {
+            var result = await _employeeQueries.GetFilteredEmployessAsync(input);
+            return new JsonResult(result);
+        }
     }
 }

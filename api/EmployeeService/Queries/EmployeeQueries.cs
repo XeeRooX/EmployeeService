@@ -57,5 +57,31 @@ namespace EmployeeService.Queries
 
             return result;
         }
+
+        public async Task<List<EmployeeDto>> GetFilteredEmployessAsync(EmployeeFilterDto filter)
+        {
+            var employees = await _employeeRepo.GetSortedAsync(filter);
+            var result = new List<EmployeeDto>();
+
+            foreach (var employee in employees)
+            {
+                result.Add(new EmployeeDto()
+                {
+                    EmployeeId = employee.Id,
+                    DateOfEmployment = employee.DateOfEmployment,
+                    Firstname = employee.Person.Firstname,
+                    Lastname = employee.Person.Lastname,
+                    Surname = employee.Person.Surname,
+                    DateOfBirth = employee.Person.DateOfBirth,
+                    DepartmentName = employee.Department.Name,
+                    DepartmentId = employee.Department.Id,
+                    PositionId = employee.Position.Id,
+                    PositionName = employee.Position.Name,
+                    Salary = employee.TariffRate * employee.Position.SurplusFactor
+                });
+            }
+
+            return result;
+        }
     }
 }

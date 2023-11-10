@@ -6,5 +6,6 @@ namespace EmployeeService.Queries
     {
         Task<List<EmployeeDto>> GetAllEmployeesAsync();
         Task<EmployeeDto> GetEmployeeAsync(EmployeeGetDto employee);
+        Task<List<EmployeeDto>> GetFilteredEmployessAsync(EmployeeFilterDto filter);
     }
 }
