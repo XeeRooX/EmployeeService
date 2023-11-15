@@ -8,6 +8,7 @@
         public string? Surname { get; set; }
         public DateTime DateOfBirth { get; set; }
         public DateTime DateOfEmployment { get; set; }
+        public double TariffRate { get; set; }
         public double Salary { get; set; }
         public int PositionId { get; set; }
         public string PositionName { get; set; } = null!;

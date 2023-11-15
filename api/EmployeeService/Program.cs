@@ -37,8 +37,21 @@ builder.Services.AddScoped<IDepartmentCommands, DepartmentCommands>();
 builder.Services.AddScoped<IEmployeeCommands, EmployeeCommands>();
 builder.Services.AddScoped<IPositionCommands, PositionCommands>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "MyAllowSpecificOrigins",
+                        policy =>
+                        {
+                            policy.WithOrigins("http://localhost:3000")
+                            .AllowAnyMethod()
+                            .AllowAnyHeader()
+                            .AllowCredentials();
+                        });
+});
+
 var app = builder.Build();
 
+app.UseCors("MyAllowSpecificOrigins");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

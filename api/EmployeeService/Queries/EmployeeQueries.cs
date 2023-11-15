@@ -29,7 +29,8 @@ namespace EmployeeService.Queries
                     DepartmentId = employee.Department.Id,
                     PositionId = employee.Position.Id,
                     PositionName = employee.Position.Name,
-                    Salary = employee.TariffRate * employee.Position.SurplusFactor
+                    Salary = employee.TariffRate * employee.Position.SurplusFactor,
+                    TariffRate = employee.TariffRate
                 });
             }
 
@@ -52,20 +53,23 @@ namespace EmployeeService.Queries
                 DepartmentId = employee.Department.Id,
                 PositionId = employee.Position.Id,
                 PositionName = employee.Position.Name,
-                Salary = employee.TariffRate * employee.Position.SurplusFactor
+                Salary = employee.TariffRate * employee.Position.SurplusFactor,
+                TariffRate = employee.TariffRate
             };
 
             return result;
         }
 
-        public async Task<List<EmployeeDto>> GetFilteredEmployessAsync(EmployeeFilterDto filter)
+        public async Task<EmployeeFilterResultDto> GetFilteredEmployessAsync(EmployeeFilterDto filter)
         {
-            var employees = await _employeeRepo.GetSortedAsync(filter);
-            var result = new List<EmployeeDto>();
+            var tuple = await _employeeRepo.GetSortedAsync(filter);
+            var employees = tuple.Item1;
+
+            var items = new List<EmployeeDto>();
 
             foreach (var employee in employees)
             {
-                result.Add(new EmployeeDto()
+                items.Add(new EmployeeDto()
                 {
                     EmployeeId = employee.Id,
                     DateOfEmployment = employee.DateOfEmployment,
@@ -77,9 +81,12 @@ namespace EmployeeService.Queries
                     DepartmentId = employee.Department.Id,
                     PositionId = employee.Position.Id,
                     PositionName = employee.Position.Name,
-                    Salary = employee.TariffRate * employee.Position.SurplusFactor
+                    Salary = employee.TariffRate * employee.Position.SurplusFactor,
+                    TariffRate = employee.TariffRate
                 });
             }
+
+            var result = new EmployeeFilterResultDto() { Items = items, CountPages = tuple.Item2 };
 
             return result;
         }

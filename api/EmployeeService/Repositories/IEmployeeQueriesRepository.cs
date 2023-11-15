@@ -11,6 +11,6 @@ namespace EmployeeService.Repositories
         bool IsExistsById(int id);
         Task<List<Employee>> GetAllAsync();
         Task<List<Employee>> GetAllIncludedAsync();
-        Task<List<Employee>> GetSortedAsync(EmployeeFilterDto filter);
+        Task<(List<Employee>, int)> GetSortedAsync(EmployeeFilterDto filter);
     }
 }

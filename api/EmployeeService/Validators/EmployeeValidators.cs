@@ -64,7 +64,7 @@ namespace EmployeeService.Validators.EmployeeValidators
             {
                 RuleFor(x => x.PositionId).Must(id => positionRepo.IsExistsById(id)).WithMessage("Элемента с таким Id не существует");
             });
-            RuleFor(x => x.CountLoaded).Must(x => x >= 0).WithMessage("Количество звгруженных элементов должно быть >= 0");
+            RuleFor(x => x.Page).Must(x => x >= 1).WithMessage("Номер страницы должен быть >= 0");
         }
     }
 
