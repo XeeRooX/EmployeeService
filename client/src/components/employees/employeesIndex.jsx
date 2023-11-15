@@ -149,7 +149,7 @@ export default class EmployeesIndex extends React.Component {
         return (<div>
             <h2>Сотрудники</h2>
             <RequestErrorPanel ref={this.child}/>
-            <div id="table" className="mt-3 border p-4 rounded">
+            <div id="table" className="mt-3 pb-2 mb-3 border p-4 rounded-5">
                 <AddEmployeeWindow
                     positions={this.state.filter.positions}
                     departments={this.state.filter.departments}

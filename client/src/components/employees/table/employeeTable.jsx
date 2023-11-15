@@ -16,7 +16,7 @@ export default class EmployeeTable extends React.Component {
     console.log(employees);
 
     return (
-      <div className="mt-2">
+      <div className="mt-4 overflow-auto mb-3">
         <table class="table">
           <thead>
             <tr>
@@ -25,7 +25,7 @@ export default class EmployeeTable extends React.Component {
               <th scope="col">Дата рождения</th>
               <th scope="col">Дата устройства на работу</th>
               <th scope="col">Заработная плата (₽)</th>
-              <th scope="col">Действия</th>
+              <th scope="col text-nowrap">Действия</th>
             </tr>
           </thead>
           <tbody class="table-group-divider">

@@ -26,7 +26,7 @@ export default class EmployeesFilter extends React.Component {
         this.loadEmployees();
     }
 
-    onAddClick(){
+    onAddClick() {
         document.querySelector('#addForm').reset();
     }
 
@@ -84,7 +84,7 @@ export default class EmployeesFilter extends React.Component {
         axios.post(apiUrl + "employee/filter", data).then((response) => {
             //console.log(response.data);
             setEmployees(response.data);
-        }).catch((error)=>{
+        }).catch((error) => {
             const showError = this.props.showError;
             showError(error);
         });
@@ -94,31 +94,44 @@ export default class EmployeesFilter extends React.Component {
         const positions = this.props.filterData.positions;
 
         return (
-            <div className="row">
-                <div className="col-1 text-center pe-0">
+            <div>
+                {/* <div className="row text-center pe-0">
                     <div className="py-3 border rounded mx-auto">
                         <button className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addWindow" onClick={this.onAddClick}>
                             <i class="bi bi-plus-circle-dotted"></i>
                         </button>
                     </div>
-                </div>
-                <div className="col">
-                    <div id="filter" className="py-3 border rounded">
+                </div> */}
+                <div className="row mx-0">
+                    <div id="filter" className="p-0 border rounded-5">
                         <div className="row px-3">
-                            <div className="col" >
+
+                            <div className="col-12 col-md-6 p-3" >
                                 <div className="row">
-                                    <div className="col">
-                                        <button className="btn btn-secondary w-100 active fio-ascending" onClick={this.onFilterClick}>ФИО по возрастанию</button>
-                                    </div>
-                                    <div className="col">
-                                        <button className="btn btn-secondary w-100 fio-descending" onClick={this.onFilterClick}>ФИО по убыванию</button>
+                                    <div className="col py-0 ">
+                                        <button className="btn btn-secondary rounded-pill text-center add-btn me-2" data-bs-toggle="modal" style={{ float: "left" }} data-bs-target="#addWindow" onClick={this.onAddClick}>
+                                            <i class="bi bi-plus-circle-dotted" style={{fontSize: "18px"}}></i>
+                                        </button>
+                                        <div className="row" style={{ marginLeft: "60px", overflow: "auto" }}>
+                                            <div className="col p-0">
+                                                <button className="btn btn-secondary active fio-ascending w-100 rounded-pill" onClick={this.onFilterClick}>
+                                                    <i class="bi bi-sort-alpha-down me-2" style={{fontSize: "18px"}}></i>
+                                                    ФИО
+                                                </button>
+                                            </div>
+                                            <div className="col pe-0">
+                                                <button className="btn btn-secondary rounded-pill fio-descending w-100" onClick={this.onFilterClick}>
+                                                <i class="bi bi-sort-alpha-down-alt me-2" style={{fontSize: "18px"}}></i>ФИО
+                                                    </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col">
+                            <div className="col p-3">
                                 <div className="row">
-                                    <div className="col-9">
-                                        <select className="form-select" onChange={this.onPositionSelectChanged}>
+                                    <div className="col-8">
+                                        <select className="form-select rounded-pill" onChange={this.onPositionSelectChanged}>
                                             <option selected disabled>Выберите нужную должность</option>
                                             <option value={0} >Любая</option>
                                             {positions.map((item, id) => {
@@ -126,13 +139,15 @@ export default class EmployeesFilter extends React.Component {
                                             })}
                                         </select>
                                     </div>
-                                    <div className="col-3">
-                                        <button id="btn-find" className="btn btn-secondary w-100" onClick={this.onFindClick} >Найти</button>
+                                    <div className="col-4">
+                                        <button id="btn-find" className="btn btn-secondary w-100 rounded-pill" onClick={this.onFindClick} >
+                                        <i class="bi bi-search" style={{fontSize: "18px"}}></i> </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         )

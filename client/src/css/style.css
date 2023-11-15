@@ -1,0 +1,107 @@
+
+.pagination{
+    --bs-pagination-border-radius: 1rem;
+    --bs-pagination-active-bg: #444;
+    --bs-pagination-active-border-color: #444;
+    --bs-pagination-color: #444;
+    --bs-pagination-hover-bg: #eeeeee;
+    --bs-pagination-focus-color: #444;
+    --bs-pagination-focus-box-shadow: 0 0 0 0.3rem rgba(68, 68, 68, 0.25);
+    font-weight: 500;
+}
+
+body{
+    line-height: 2;
+}
+
+
+.left-pill-porder{
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+
+.add-btn{
+    width: 60px;
+    line-height: 1.5;
+}
+
+.btn{
+    --bs-btn-line-height: 1.5;
+    --bs-btn-font-weight: 500;
+}
+
+.btn-secondary{
+    background-color: #444
+}
+
+.form-select:focus{
+    border-color: #444;
+    box-shadow: 0 0 0 0.3rem rgba(68, 68, 68, 0.25);
+}
+
+.btn-secondary:active{
+    background-color: #565656 !important;
+}
+
+.btn-secondary.active{
+    background-color: #eeeeee !important;
+    color: #444;
+}
+
+.btn-secondary:hover{
+    background-color: #6a6a6a !important;
+}
+
+.form-select{
+    line-height: 1.8;
+}
+
+.btn-primary{
+    background-color: #eeeeee;
+    color: #444;
+    border-color: #444;
+}
+
+.btn-primary:hover{
+    background-color: #444;
+    color: #eee;
+    border-color: #444;
+}
+
+.btn-primary:active{
+    background-color: #565656 !important;
+    color: #eee;
+    border-color: #444 !important; 
+}
+
+.edit-btn{
+    width: 55px;
+}
+
+.btn-close{
+    --bs-btn-close-focus-shadow: 0 0 0 0.3rem rgba(68, 68, 68, 0.25);
+}
+
+.form-control:focus{
+    border-color: #444;
+    box-shadow: 0 0 0 0.3rem rgba(68, 68, 68, 0.25);
+
+}
+
+.bootstrap-datetimepicker-widget.dropdown-menu {
+    background-color: #30363b;
+    border-color: #2b3135;
+    width: 100%;
+  }
+
+  .datepicker table tr td.active,
+.datepicker table tr td.active:hover {
+    background: rgb(44, 16, 15);
+    text-shadow: none;
+}
+
+.read-more-btn{
+    background-color: #444;
+    color: #eee;
+    width: 200px;
+}

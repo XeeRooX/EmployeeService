@@ -30,9 +30,10 @@ export default class EmployeeTableRow extends React.Component {
                 <td>{dateOfBirth.toLocaleDateString("ru-RU")}</td>
                 <td>{dateOfEmployment.toLocaleDateString("ru-RU")}</td>
                 <td>{this.props.salary}</td>
-                <td>
-                    <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editWindow" onClick={this.onEditClick}><i class="bi bi-pencil-square"></i></button>
-                    <button className="btn btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#deleteWindow" onClick={this.onEditClick}><i class="bi bi-trash"></i></button>
+                <td className="text-nowrap">
+                    <button className="btn btn-primary rounded-pill edit-btn" data-bs-toggle="modal" data-bs-target="#editWindow" 
+                    onClick={this.onEditClick}><i class="bi bi-pencil-square"></i></button>
+                    <button className="btn btn-primary rounded-pill edit-btn ms-2" data-bs-toggle="modal" data-bs-target="#deleteWindow" onClick={this.onEditClick}><i class="bi bi-trash"></i></button>
                 </td>
             </tr>
         );

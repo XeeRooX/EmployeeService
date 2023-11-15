@@ -9,6 +9,7 @@ import EmployeesIndex from './components/employees/employeesIndex';
 import AboutIndex from './components/about/aboutIndex';
 import config from "./config.json";
 import 'bootstrap/dist/js/bootstrap.min.js';
+import "./css/style.css";
 
 
 export default function Main(){
@@ -16,7 +17,7 @@ export default function Main(){
     <Router>
       <Routes>
         <Route path="/" element={<App/>}>
-          <Route path='/employees' element={<EmployeesIndex config={config}/>}></Route>
+          <Route path='/employees' element={<EmployeesIndex config={config}/>} ></Route>
           <Route path='' element={<AboutIndex/>}></Route>
         </Route>
       </Routes>

@@ -46,7 +46,7 @@ namespace EmployeeService.Commands
                 DateOfEmployment = employeeData.DateOfEmployment,
                 TariffRate = employeeData.TariffRate,
                 DepartmentId = employeeData.DepartmentId,
-                PositionId = employeeData.PostionId
+                PositionId = employeeData.PositionId
             };
 
             Person person = new Person()

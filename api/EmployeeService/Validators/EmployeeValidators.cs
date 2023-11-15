@@ -51,7 +51,7 @@ namespace EmployeeService.Validators.EmployeeValidators
             RuleFor(x => x.DateOfBirth).Must(date => date < DateTime.Now).WithMessage("Дата рождения не может быть больше текущей");
             RuleFor(x => x.TariffRate).Must(x => x > 0).WithMessage("Оклад должен быть больше чем 0");
             RuleFor(x => x.DepartmentId).Must((id) => departmentRepo.IsExistsById(id)).WithMessage("Элемента с таким Id не существует");
-            RuleFor(x => x.PostionId).Must((id) => positionRepo.IsExistsById(id)).WithMessage("Элемента с таким Id не существует");
+            RuleFor(x => x.PositionId).Must((id) => positionRepo.IsExistsById(id)).WithMessage("Элемента с таким Id не существует");
         }
     }
 

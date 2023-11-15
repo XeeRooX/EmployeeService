@@ -14,7 +14,7 @@ export default class EditEmployeeWindow extends React.Component {
             dateOfBirth: "2000-01-01",
             dateOfEmployment: "2000-01-01",
             tariffRate: 0,
-            postionId: 0,
+            positionId: 0,
             departmentId: 0
         };
 
@@ -81,9 +81,9 @@ export default class EditEmployeeWindow extends React.Component {
         this.setState({ tariffRate: tariffRate });
     }
 
-    onPostionIdChanged = (e) => {
-        const postionId = e.target.value;
-        this.setState({ postionId: postionId });
+    onpositionIdChanged = (e) => {
+        const positionId = e.target.value;
+        this.setState({ positionId: positionId });
     }
 
     onDepartmentIdChanged = (e) => {
@@ -101,6 +101,10 @@ export default class EditEmployeeWindow extends React.Component {
             let data = response.data;
             data['dateOfBirth'] = data['dateOfBirth'].slice(0, 10);
             data['dateOfEmployment'] = data['dateOfEmployment'].slice(0, 10);
+
+            console.log("Editdata");
+            console.log(data);
+
             this.setState(data);
         }).catch((error)=>{
             const showError = this.props.showError;
@@ -207,9 +211,9 @@ export default class EditEmployeeWindow extends React.Component {
                             </div>
                             <div class="mb-3">
                                 <label for="postion" class="form-label">Должность</label>
-                                <select id="postion" class="form-select" name="postionId" required={true}
-                                    value={this.state.postionId}
-                                    onChange={this.onPostionIdChanged}
+                                <select id="postion" class="form-select" name="positionId" required={true}
+                                    value={this.state.positionId}
+                                    onChange={this.onpositionIdChanged}
                                 >
                                     <option disabled={true}>Выберите должность ...</option>
                                     {this.props.positions.map((item, idx) => {

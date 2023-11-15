@@ -35,15 +35,15 @@ export default class EmployeesPagination extends React.Component {
 
         return (
             <div hidden={countPages == 0}>
-                <nav aria-label="Page navigation example" >
+                <nav aria-label="Page navigation example" className="rounded-5">
                     <ul className="pagination justify-content-center">
                         {currentPage == 1 ?
                             <li className="page-item disabled">
-                                <a className="page-link" onClick={this.onPrevPageClick}>Назад</a>
+                                <a className="page-link left-pill-porder" onClick={this.onPrevPageClick}>Назад</a>
                             </li> :
                             <li classNames="page-item" >
-                                {isDisabled ? <a className="page-link disabled" href="#" onClick={this.onPrevPageClick}>Назад</a> : 
-                                <a className="page-link" href="#" onClick={this.onPrevPageClick}>Назад</a>}
+                                {isDisabled ? <a className="page-link disabled left-pill-porder" href="#" onClick={this.onPrevPageClick}>Назад</a> : 
+                                <a className="page-link left-pill-porder" href="#" onClick={this.onPrevPageClick}>Назад</a>}
                             </li>
                         }
                         {
