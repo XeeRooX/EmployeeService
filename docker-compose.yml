@@ -1,0 +1,41 @@
+version: '3.4'
+
+volumes:
+  postgres:
+
+services:
+  api:
+    image: ${DOCKER_REGISTRY-}api
+    build:
+      context: .
+      dockerfile: api/EmployeeService/Dockerfile
+    depends_on:
+      - db
+    restart: always
+    ports:
+      - 5000:5000
+    environment:
+      ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=usersdb;Username=postgres;Password=12345678"
+      ASPNETCORE_ENVIRONMENT: "Production"
+      ASPNETCORE_URLS: "http://+:5000"
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "12345678"
+      PGDATA: /data/postgres
+    volumes:
+       - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+  
+  client:
+    image: client
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+    restart: always
+    ports:
+    - "3000:3000"
