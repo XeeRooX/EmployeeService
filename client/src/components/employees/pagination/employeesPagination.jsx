@@ -41,7 +41,7 @@ export default class EmployeesPagination extends React.Component {
                             <li className="page-item disabled">
                                 <a className="page-link left-pill-porder" onClick={this.onPrevPageClick}>Назад</a>
                             </li> :
-                            <li classNames="page-item" >
+                            <li className="page-item" >
                                 {isDisabled ? <a className="page-link disabled left-pill-porder" href="#" onClick={this.onPrevPageClick}>Назад</a> : 
                                 <a className="page-link left-pill-porder" href="#" onClick={this.onPrevPageClick}>Назад</a>}
                             </li>

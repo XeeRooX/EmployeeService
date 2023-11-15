@@ -82,7 +82,6 @@ export default class EmployeesFilter extends React.Component {
         const setEmployees = this.props.setEmployees;
 
         axios.post(apiUrl + "employee/filter", data).then((response) => {
-            //console.log(response.data);
             setEmployees(response.data);
         }).catch((error) => {
             const showError = this.props.showError;
@@ -95,13 +94,6 @@ export default class EmployeesFilter extends React.Component {
 
         return (
             <div>
-                {/* <div className="row text-center pe-0">
-                    <div className="py-3 border rounded mx-auto">
-                        <button className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addWindow" onClick={this.onAddClick}>
-                            <i class="bi bi-plus-circle-dotted"></i>
-                        </button>
-                    </div>
-                </div> */}
                 <div className="row mx-0">
                     <div id="filter" className="p-0 border rounded-5">
                         <div className="row px-3">
@@ -110,18 +102,18 @@ export default class EmployeesFilter extends React.Component {
                                 <div className="row">
                                     <div className="col py-0 ">
                                         <button className="btn btn-secondary rounded-pill text-center add-btn me-2" data-bs-toggle="modal" style={{ float: "left" }} data-bs-target="#addWindow" onClick={this.onAddClick}>
-                                            <i class="bi bi-plus-circle-dotted" style={{fontSize: "18px"}}></i>
+                                            <i className="bi bi-plus-circle-dotted" style={{fontSize: "18px"}}></i>
                                         </button>
                                         <div className="row" style={{ marginLeft: "60px", overflow: "auto" }}>
                                             <div className="col p-0">
                                                 <button className="btn btn-secondary active fio-ascending w-100 rounded-pill" onClick={this.onFilterClick}>
-                                                    <i class="bi bi-sort-alpha-down me-2" style={{fontSize: "18px"}}></i>
+                                                    <i className="bi bi-sort-alpha-down me-2" style={{fontSize: "18px"}}></i>
                                                     ФИО
                                                 </button>
                                             </div>
                                             <div className="col pe-0">
                                                 <button className="btn btn-secondary rounded-pill fio-descending w-100" onClick={this.onFilterClick}>
-                                                <i class="bi bi-sort-alpha-down-alt me-2" style={{fontSize: "18px"}}></i>ФИО
+                                                <i className="bi bi-sort-alpha-down-alt me-2" style={{fontSize: "18px"}}></i>ФИО
                                                     </button>
                                             </div>
                                         </div>
@@ -131,8 +123,8 @@ export default class EmployeesFilter extends React.Component {
                             <div className="col p-3">
                                 <div className="row">
                                     <div className="col-8">
-                                        <select className="form-select rounded-pill" onChange={this.onPositionSelectChanged}>
-                                            <option selected disabled>Выберите нужную должность</option>
+                                        <select className="form-select rounded-pill" defaultValue={-1} onChange={this.onPositionSelectChanged}>
+                                            <option value={-1} disabled>Выберите нужную должность</option>
                                             <option value={0} >Любая</option>
                                             {positions.map((item, id) => {
                                                 return <option value={item.id} key={item.id}>{item.name}</option>
@@ -141,7 +133,7 @@ export default class EmployeesFilter extends React.Component {
                                     </div>
                                     <div className="col-4">
                                         <button id="btn-find" className="btn btn-secondary w-100 rounded-pill" onClick={this.onFindClick} >
-                                        <i class="bi bi-search" style={{fontSize: "18px"}}></i> </button>
+                                        <i className="bi bi-search" style={{fontSize: "18px"}}></i> </button>
                                     </div>
                                 </div>
                             </div>

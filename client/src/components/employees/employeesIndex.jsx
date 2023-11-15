@@ -118,8 +118,6 @@ export default class EmployeesIndex extends React.Component {
             }
 
             const data = { filter: { ...this.state.filter, positions: positions } };
-            console.log("2 postions");
-            console.log(data);
             this.setState(() => data);
         }).catch((error)=>{
             this.showError(error);
@@ -128,7 +126,6 @@ export default class EmployeesIndex extends React.Component {
     }
 
     showError = (error)=>{
-        console.log("error "+ error)
         this.child.current.showError(error);
     }
 
@@ -143,8 +140,6 @@ export default class EmployeesIndex extends React.Component {
     }
 
     render() {
-        console.log("!!!!!!!!!!!!");
-        console.log(this.state.filter);
 
         return (<div>
             <h2>Сотрудники</h2>

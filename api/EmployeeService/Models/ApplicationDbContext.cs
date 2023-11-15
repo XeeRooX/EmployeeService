@@ -10,7 +10,13 @@ namespace EmployeeService.Models
         public DbSet<Department> Departments { get; set; } = null!;
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
-        {        
+        {
+            
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            InitializeDb.Initialize(builder);
         }
     }
 }

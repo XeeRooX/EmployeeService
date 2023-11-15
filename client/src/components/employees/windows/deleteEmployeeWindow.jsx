@@ -11,9 +11,6 @@ export default class DeleteEmployeeWindow extends React.Component {
         const id = this.props.currentEditId;
         const apiUrl = this.props.config.API_URL;
 
-        console.log("currentEditId");
-        console.log(id);
-
         axios.delete(apiUrl + "employee/delete", {
             headers : { "Content-Type" : "application/json"},
             data : {id : id}
@@ -28,20 +25,20 @@ export default class DeleteEmployeeWindow extends React.Component {
     }
 
     render() {
-        return <div class="modal fade" id="deleteWindow" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Удалить сотрудника</h1>
-                        <button type="button" id="close-delete-window" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        return <div className="modal fade" id="deleteWindow" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h1 className="modal-title fs-5" id="exampleModalLabel">Удалить сотрудника</h1>
+                        <button type="button" id="close-delete-window" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body p-3">
+                    <div className="modal-body p-3">
                         <p className="m-0">Вы точно хотите удалить сотрудника: </p>
                         <p className="m-0"> <span style={{ fontWeight: "bold", fontStyle: "italic" }}>{this.props.currentDeleteFio}</span></p>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-                        <button type="submit" class="btn btn-primary" onClick={this.deleteButtonClick}>Удалить</button>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                        <button type="submit" className="btn btn-primary" onClick={this.deleteButtonClick}>Удалить</button>
                     </div>
                 </div>
             </div>

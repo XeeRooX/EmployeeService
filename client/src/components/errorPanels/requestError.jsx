@@ -20,7 +20,6 @@ export default class RequestErrorPanel extends React.Component {
                 break;
             default:
                 message = "Возникли проблемы при подключении к серверу";
-                console.log(error);
                 break;
         }
 
@@ -36,10 +35,10 @@ export default class RequestErrorPanel extends React.Component {
     render() {
         return <div>
             {this.state.message &&
-                <div class="alert alert-danger fade show " role="alert">
-                    {/* <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink: href="#exclamation-triangle-fill" /></svg> */}
+                <div className="alert alert-danger fade show " role="alert">
+                    {/* <svg className="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink: href="#exclamation-triangle-fill" /></svg> */}
                     <strong>Ошибка!</strong> {this.state.message}
-                    <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="alert" aria-label="Close" onClick={this.removeClick}></button>
+                    <button type="button" className="btn-close position-absolute end-0 me-3" data-bs-dismiss="alert" aria-label="Close" onClick={this.removeClick}></button>
                 </div>
             }
         </div>;

@@ -11,7 +11,7 @@ export default class EmployeeTableRow extends React.Component {
         const setCurrentEditId = this.props.setCurrentEditId;
         const setCurrentDeleteFio = this.props.setCurrentDeleteFio;
 
-        const fio = `${this.props.lastname} ${this.props.firstname} ${this.props.surname}`;
+        const fio = `${this.props.lastname} ${this.props.firstname} ${this.props.surname ? this.props.surname : ''}`;
 
         await setCurrentEditId(this.props.employeeId);
         await setCurrentDeleteFio(fio);
@@ -32,8 +32,8 @@ export default class EmployeeTableRow extends React.Component {
                 <td>{this.props.salary}</td>
                 <td className="text-nowrap">
                     <button className="btn btn-primary rounded-pill edit-btn" data-bs-toggle="modal" data-bs-target="#editWindow" 
-                    onClick={this.onEditClick}><i class="bi bi-pencil-square"></i></button>
-                    <button className="btn btn-primary rounded-pill edit-btn ms-2" data-bs-toggle="modal" data-bs-target="#deleteWindow" onClick={this.onEditClick}><i class="bi bi-trash"></i></button>
+                    onClick={this.onEditClick}><i className="bi bi-pencil-square"></i></button>
+                    <button className="btn btn-primary rounded-pill edit-btn ms-2" data-bs-toggle="modal" data-bs-target="#deleteWindow" onClick={this.onEditClick}><i className="bi bi-trash"></i></button>
                 </td>
             </tr>
         );

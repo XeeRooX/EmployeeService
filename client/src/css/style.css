@@ -88,18 +88,6 @@ body{
 
 }
 
-.bootstrap-datetimepicker-widget.dropdown-menu {
-    background-color: #30363b;
-    border-color: #2b3135;
-    width: 100%;
-  }
-
-  .datepicker table tr td.active,
-.datepicker table tr td.active:hover {
-    background: rgb(44, 16, 15);
-    text-shadow: none;
-}
-
 .read-more-btn{
     background-color: #444;
     color: #eee;

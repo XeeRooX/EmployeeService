@@ -102,8 +102,8 @@ export default class EditEmployeeWindow extends React.Component {
             data['dateOfBirth'] = data['dateOfBirth'].slice(0, 10);
             data['dateOfEmployment'] = data['dateOfEmployment'].slice(0, 10);
 
-            console.log("Editdata");
-            console.log(data);
+            if(!data['surname'])
+                data['surname'] = '';
 
             this.setState(data);
         }).catch((error)=>{
@@ -141,27 +141,27 @@ export default class EditEmployeeWindow extends React.Component {
 
     render() {
 
-        return <div class="modal fade" id="editWindow" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Редактировать сотрудника</h1>
-                        <button type="button" id="close-edit-window" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        return <div className="modal fade" id="editWindow" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h1 className="modal-title fs-5" id="exampleModalLabel">Редактировать сотрудника</h1>
+                        <button type="button" id="close-edit-window" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form id={"addForm"} onSubmit={this.onFormSubmit}>
-                        <div class="modal-body p-3">
-                            <div class="form-floating mb-3 ">
-                                <input type="text" class="form-control" id="lastname" name="lastname"
+                        <div className="modal-body p-3">
+                            <div className="form-floating mb-3 ">
+                                <input type="text" className="form-control" id="lastname" name="lastname"
                                     min={2}
                                     max={30}
                                     required={true}
                                     value={this.state.lastname}
                                     onChange={this.onLastnameChanged}
                                 />
-                                <label for="lastname">Фамилия</label>
+                                <label htmlFor="lastname">Фамилия</label>
                             </div>
-                            <div class="form-floating mb-3 ">
-                                <input type="text" class="form-control" id="firstname"
+                            <div className="form-floating mb-3 ">
+                                <input type="text" className="form-control" id="firstname"
                                     name="firstname"
                                     min={2} max={30}
                                     required={true}
@@ -169,49 +169,49 @@ export default class EditEmployeeWindow extends React.Component {
                                     onChange={this.onFirstnameChanged}
 
                                 />
-                                <label for="firstname">Имя</label>
+                                <label htmlFor="firstname">Имя</label>
                             </div>
-                            <div class="form-floating mb-3 ">
-                                <input type="text" class="form-control" id="surname" name="surname"
+                            <div className="form-floating mb-3 ">
+                                <input type="text" className="form-control" id="surname" name="surname"
                                     min={2}
                                     max={30}
                                     required={false}
                                     value={this.state.surname}
                                     onChange={this.onSurnameChanged}
                                 />
-                                <label for="surname">Отчество</label>
+                                <label htmlFor="surname">Отчество</label>
                             </div>
-                            <div class="form-floating mb-3 ">
-                                <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth"
+                            <div className="form-floating mb-3 ">
+                                <input type="date" className="form-control" id="dateOfBirth" name="dateOfBirth"
                                     required={true}
                                     onChange={this.onDateOfBirthChanged}
                                     max={new Date().toISOString().slice(0,10)}
                                     value={this.state.dateOfBirth}
                                 />
-                                <label for="dateOfBirth">Дата рождения</label>
+                                <label htmlFor="dateOfBirth">Дата рождения</label>
                             </div>
-                            <div class="form-floating mb-3 ">
-                                <input type="date" class="form-control" id="dateOfEmployment" name="dateOfEmployment"
+                            <div className="form-floating mb-3 ">
+                                <input type="date" className="form-control" id="dateOfEmployment" name="dateOfEmployment"
                                     required={true}
                                     onChange={this.onDateOfEmploymentChanged}
                                     max={new Date().toISOString().slice(0,10)}
                                     value={this.state.dateOfEmployment}
                                 />
-                                <label for="dateOfEmployment">Дата устройства на работу</label>
+                                <label htmlFor="dateOfEmployment">Дата устройства на работу</label>
                             </div>
-                            <div class="form-floating mb-3 ">
-                                <input type="number" class="form-control" id="tariffRate" name="tariffRate"
+                            <div className="form-floating mb-3 ">
+                                <input type="number" className="form-control" id="tariffRate" name="tariffRate"
                                     min={0}
                                     required={true}
                                     key={this.state.tariffRate ? 'notLoaded' : 'loaded'}
                                     value={this.state.tariffRate}
                                     onChange={this.onTariffRateChanged}
                                 />
-                                <label for="tariffRate">Оклад</label>
+                                <label htmlFor="tariffRate">Оклад</label>
                             </div>
-                            <div class="mb-3">
-                                <label for="postion" class="form-label">Должность</label>
-                                <select id="postion" class="form-select" name="positionId" required={true}
+                            <div className="mb-3">
+                                <label htmlFor="postion" className="form-label">Должность</label>
+                                <select id="postion" className="form-select" name="positionId" required={true}
                                     value={this.state.positionId}
                                     onChange={this.onpositionIdChanged}
                                 >
@@ -221,9 +221,9 @@ export default class EditEmployeeWindow extends React.Component {
                                     })}
                                 </select>
                             </div>
-                            <div class="mb-3">
-                                <label for="department" class="form-label" >Отдел</label>
-                                <select id="department" class="form-select" name="departmentId" required={true}
+                            <div className="mb-3">
+                                <label htmlFor="department" className="form-label" >Отдел</label>
+                                <select id="department" className="form-select" name="departmentId" required={true}
                                     value={this.state.departmentId}
                                     onChange={this.onDepartmentIdChanged}
                                 >
@@ -234,9 +234,9 @@ export default class EditEmployeeWindow extends React.Component {
                                 </select>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-                            <button type="submit" class="btn btn-primary">Сохранить</button>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                            <button type="submit" className="btn btn-primary">Сохранить</button>
                         </div>
                     </form>
                 </div>
