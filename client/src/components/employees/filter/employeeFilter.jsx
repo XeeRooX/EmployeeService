@@ -95,10 +95,10 @@ export default class EmployeesFilter extends React.Component {
         return (
             <div>
                 <div className="row mx-0">
-                    <div id="filter" className="p-0 border rounded-5">
+                    <div id="filter" className="p-0 ps-3 border rounded-5 pb-3">
                         <div className="row px-3">
 
-                            <div className="col-12 col-md-6 p-3" >
+                            <div className="col-12 col-md-6 p-3 ps-0 pb-0" >
                                 <div className="row">
                                     <div className="col py-0 ">
                                         <button className="btn btn-secondary rounded-pill text-center add-btn me-2" data-bs-toggle="modal" style={{ float: "left" }} data-bs-target="#addWindow" onClick={this.onAddClick}>
@@ -120,7 +120,7 @@ export default class EmployeesFilter extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col p-3">
+                            <div className="col p-3 pb-0 ps-0">
                                 <div className="row">
                                     <div className="col-8">
                                         <select className="form-select rounded-pill" defaultValue={-1} onChange={this.onPositionSelectChanged}>

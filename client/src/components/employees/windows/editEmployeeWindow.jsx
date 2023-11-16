@@ -202,6 +202,7 @@ export default class EditEmployeeWindow extends React.Component {
                             <div className="form-floating mb-3 ">
                                 <input type="number" className="form-control" id="tariffRate" name="tariffRate"
                                     min={0}
+                                    max={10000000}
                                     required={true}
                                     key={this.state.tariffRate ? 'notLoaded' : 'loaded'}
                                     value={this.state.tariffRate}

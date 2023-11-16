@@ -81,7 +81,7 @@ export default class AddEmployeeWindow extends React.Component {
                                 <label htmlFor="dateOfEmployment">Дата устройства на работу</label>
                             </div>
                             <div className="form-floating mb-3 ">
-                                <input type="number" className="form-control" id="tariffRate" name="tariffRate" min={0} required={true} />
+                                <input type="number" className="form-control" id="tariffRate" name="tariffRate" min={0} max={10000000} required={true} />
                                 <label htmlFor="tariffRate">Оклад</label>
                             </div>
                             <div className="mb-3">
