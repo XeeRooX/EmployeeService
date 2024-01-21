@@ -36,5 +36,20 @@ namespace EmployeeService.Models
                 new Employee() { Id = 6, TariffRate = 37000, DateOfEmployment = new DateTime(2021, 11, 15), DepartmentId = 1, PersonId = 4, PositionId = 3 }
                 );
         }
+
+        public static void Migrate(WebApplication app)
+        {
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+
+                var context = services.GetRequiredService<ApplicationDbContext>();
+
+                if (context.Database.GetPendingMigrations().Any())
+                {
+                    context.Database.Migrate();
+                }
+            }
+        }
     }
 }

@@ -16,8 +16,9 @@ services:
       - 5000:5000
     environment:
       ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=usersdb;Username=postgres;Password=12345678"
-      ASPNETCORE_ENVIRONMENT: "Development"
+      ASPNETCORE_ENVIRONMENT: "Production"
       ASPNETCORE_URLS: "http://+:5000"
+      ClientHostname: "127.0.0.1:3000"
 
   db:
     image: postgres

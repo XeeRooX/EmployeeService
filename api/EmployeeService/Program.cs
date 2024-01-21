@@ -1,50 +1,24 @@
-using EmployeeService.Commands;
 using EmployeeService.Models;
-using EmployeeService.Queries;
-using EmployeeService.Repositories;
-using EmployeeService.Validators.EmployeeValidators;
-using FluentValidation;
-using FluentValidation.AspNetCore;
-using Microsoft.EntityFrameworkCore;
-using static FluentValidation.DependencyInjectionExtensions;
-
+using EmployeeService.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddFluentValidationAutoValidation();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddValidatorsFromAssemblyContaining<GetEmployeeValidator>();
 builder.Services.AddSwaggerGen();
 
-string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-//builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(connectionString));
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
-AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+builder.Services.RegisterCustomServices(builder);
 
-builder.Services.AddScoped<IEmployeeCommandsRepository, EmployeeCommandsRepository>();
-builder.Services.AddScoped<IEmployeeQueriesRepository, EmployeeQueriesRepository>();
-builder.Services.AddScoped<IDepartmentCommandsRepository, DepartmentCommandsRepository>();
-builder.Services.AddScoped<IDepartmentQueriesRepository, DepartmentQueriesRepository>();
-builder.Services.AddScoped<IPositionQueriesRepository, PositionQueriesRepository>();
-builder.Services.AddScoped<IPositionCommandsRepository, PositionCommandsRepository>();
-
-builder.Services.AddScoped<IDepartmentQueries, DepartmentQueries>();
-builder.Services.AddScoped<IEmployeeQueries, EmployeeQueries>();
-builder.Services.AddScoped<IPositionQueries, PositionQueries>();
-builder.Services.AddScoped<IDepartmentCommands, DepartmentCommands>();
-builder.Services.AddScoped<IEmployeeCommands, EmployeeCommands>();
-builder.Services.AddScoped<IPositionCommands, PositionCommands>();
+var clientHost = builder.Configuration.GetValue<string>("ClientHostname") ?? "localhost:3000";
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: "MyAllowSpecificOrigins",
                         policy =>
                         {
-                            policy.WithOrigins("http://localhost:3000")
+                            policy.WithOrigins($"http://{clientHost}")
                             .AllowAnyMethod()
                             .AllowAnyHeader()
                             .AllowCredentials();
@@ -54,26 +28,15 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 app.UseCors("MyAllowSpecificOrigins");
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+
+app.UseSwagger();
+
+app.UseSwaggerUI();
 
 app.UseAuthorization();
 
 app.MapControllers();
 
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-
-    var context = services.GetRequiredService<ApplicationDbContext>();
-    if (context.Database.GetPendingMigrations().Any())
-    {
-        context.Database.Migrate();
-    }
-}
+InitializeDb.Migrate(app);
 
 app.Run();
