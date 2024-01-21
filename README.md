@@ -16,10 +16,16 @@
 ```
 http://localhost:3000
 ```
+
+![image](https://github.com/XeeRooX/EmployeeService/assets/91987012/2584e8d3-1579-4382-8bc1-71b380d0cb87)
+
 Чтобы зайти в Swagger UI можно перейти по адресу:
 ```
 http://localhost:5000/swagger
 ```
+
+![image](https://github.com/XeeRooX/EmployeeService/assets/91987012/5c9c4f0f-7dc5-4fd4-840a-3b277bc8f29f)
+
 ## Конфигурация
 Вся основная конфигурация хранится в переменных окружения, которые можно назначить в файле docker-compose.yml в блоке environment. Все переменные, описанные в этом блоке, стандартные кроме нескольких:
 - ConnectionStrings__DefaultConnection - хранит в себе значение строки подключения к базе данных
